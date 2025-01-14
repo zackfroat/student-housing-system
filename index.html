@@ -181,15 +181,7 @@
             text-align: center;
         }
 
-        .popup select {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .popup input {
+        .popup select, .popup input {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
@@ -224,14 +216,18 @@
     </style>
 </head>
 <body>
+    <!-- Navbar -->
     <div class="navbar">
         <img src="img/2.png" alt="University Logo">
         <div>
             <button class="btn" onclick="showPopup('login')">Login</button>
             <button class="btn" onclick="showPopup('signup')">Sign Up</button>
+            <!-- Corrected button action for Tutorial -->
+            <button class="btn" onclick="redirectToPage('tutorial.html')">Tutorial</button>
         </div>
     </div>
 
+    <!-- Main Content -->
     <div class="main-content">
         <div class="left-section">
             <img src="img/1.png" alt="Student Housing System">
@@ -241,23 +237,28 @@
             <div class="news-container">
                 <div class="news-item">News Item 1: Housing updates are coming soon.</div>
                 <div class="news-item">News Item 2: Maintenance scheduled for next week.</div>
+                <!-- Additional news items as placeholders -->
                 <div class="news-item">News Item 3: New housing units are now available.</div>
-                <div class="news-item">News Item 4: New housing units are now available.</div>
-                <div class="news-item">News Item 5: New housing units are now available.</div>
-                <div class="news-item">News Item 6: New housing units are now available.</div>
-                <div class="news-item">News Item 7: New housing units are now available.</div>
-                <div class="news-item">News Item 8: New housing units are now available.</div>
+                <div class="news-item">News Item 4: Events planned for next semester.</div>
+                <div class="news-item">News Item 3: New housing units are now available.</div>
+                <div class="news-item">News Item 4: Events planned for next semester.</div>
+                <div class="news-item">News Item 3: New housing units are now available.</div>
+                <div class="news-item">News Item 4: Events planned for next semester.</div>
+                <div class="news-item">News Item 3: New housing units are now available.</div>
+                <div class="news-item">News Item 4: Events planned for next semester.</div>
             </div>
         </div>
     </div>
 
+    <!-- Notice Section -->
     <div class="notice-section">
-        <h2>Notice</h2>
+        <h2>Notice</h2>s
         <div class="notice-box">
             <p>System maintenance on January 15th. Stay safe!</p>
         </div>
     </div>
 
+    <!-- Coming Soon Section -->
     <div class="coming-soon-section">
         <h2>Coming Soon Events</h2>
         <div class="carousel-container">
@@ -294,7 +295,6 @@
             <button type="submit">Login</button>
         </form>
     </div>
-    
 
     <div class="popup" id="signupPopup">
         <h3>Sign Up</h3>
@@ -313,6 +313,7 @@
         </form>
     </div>
 
+    <!-- JavaScript -->
     <script>
         function showPopup(type) {
             document.getElementById('overlay').style.display = 'block';
@@ -329,8 +330,11 @@
             document.getElementById('signupPopup').style.display = 'none';
         }
 
-        let currentIndex = 0;
+        function redirectToPage(page) {
+            window.location.href = page;
+        }
 
+        let currentIndex = 0;
         function showSlide(index) {
             const carousel = document.getElementById("carousel");
             const totalSlides = carousel.children.length;
@@ -350,35 +354,25 @@
         setInterval(nextSlide, 5000);
 
         function handleFormSubmission(type) {
-        const roleSelect = document.querySelector(`#${type}Popup select`);
-        const role = roleSelect.value;
+            const roleSelect = document.querySelector(`#${type}Popup select`);
+            const role = roleSelect.value;
 
-        if (!role) {
-            alert("Please select a role.");
+            if (!role) {
+                alert("Please select a role.");
+                return false;
+            }
+
+            if (type === 'login' || type === 'signup') {
+                if (role === 'student') {
+                    window.location.href = 'student.html';
+                } else if (role === 'admin') {
+                    window.location.href = 'admin.html';
+                } else if (role === 'landlord') {
+                    window.location.href = 'landlord.html';
+                }
+            }
+
             return false;
-        }
-
-        if (type === 'login') {
-            // Redirect based on role for login
-            if (role === 'student') {
-                window.location.href = 'student.html';
-            } else if (role === 'admin') {
-                window.location.href = 'admin.html';
-            } else if (role === 'landlord') {
-                window.location.href = 'landlord.html';
-            }
-        } else if (type === 'signup') {
-            // Redirect based on role for signup
-            if (role === 'student') {
-                window.location.href = 'student.html';
-            } else if (role === 'admin') {
-                window.location.href = 'admin.html';
-            } else if (role === 'landlord') {
-                window.location.href = 'landlord.html';
-            }
-        }
-
-        return false; // Prevent default form submission
         }
     </script>
 </body>
