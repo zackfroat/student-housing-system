@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approved Houses</title>
+    <style>
+        /* Reusing the same styles from previous dashboards */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar img {
+            height: 120px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: #d69ce8;
+            color: white;
+        }
+
+        .welcome-box {
+            background-color: #d69ce8;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .main-content {
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: #b76bc7;
+            margin-bottom: 20px;
+        }
+
+        .content-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .house-details {
+            font-size: 14px;
+        }
+
+        .house-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <img src="img/2.png" alt="University Logo">
+        <div class="nav-links">
+            <a href="account2.html">Account</a>
+            <a href="landlord.html">Home</a>
+            <a href="contact2.html">Contact Us</a>
+        </div>
+        <div class="welcome-box">
+            Approved Houses
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1 class="header">Approved Houses</h1>
+
+        <!-- Approved House 1 -->
+        <div class="content-box">
+            <img class="house-image" src="img/r1.jpg" alt="House 1">
+            <div>
+                <h3>House 1</h3>
+                <p class="house-details"><strong>Address:</strong> 123 Main Street, Cityville</p>
+                <p class="house-details"><strong>Rent:</strong> RM 1,500/month</p>
+                <p class="house-details"><strong>Water Bills:</strong> RM 50</p>
+                <p class="house-details"><strong>Electricity Bills:</strong> RM 100</p>
+                <p class="house-details"><strong>Tenant Gender:</strong> Both</p>
+                <p class="house-details"><strong>Distance from University:</strong> 5 km</p>
+            </div>
+        </div>
+
+        <!-- Approved House 2 -->
+        <div class="content-box">
+            <img class="house-image" src="img/r2.jpg" alt="House 2">
+            <div>
+                <h3>House 2</h3>
+                <p class="house-details"><strong>Address:</strong> 456 Elm Street, Townsville</p>
+                <p class="house-details"><strong>Rent:</strong> RM 1,200/month</p>
+                <p class="house-details"><strong>Water Bills:</strong> RM 45</p>
+                <p class="house-details"><strong>Electricity Bills:</strong> RM 90</p>
+                <p class="house-details"><strong>Tenant Gender:</strong> Male</p>
+                <p class="house-details"><strong>Distance from University:</strong> 3 km</p>
+            </div>
+        </div>
+
+        <!-- Approved House 3 -->
+        <div class="content-box">
+            <img class="house-image" src="img/r3.jpg" alt="House 3">
+            <div>
+                <h3>House 3</h3>
+                <p class="house-details"><strong>Address:</strong> 789 Oak Avenue, Villagetown</p>
+                <p class="house-details"><strong>Rent:</strong> RM 1,800/semester</p>
+                <p class="house-details"><strong>Water Bills:</strong> RM 60</p>
+                <p class="house-details"><strong>Electricity Bills:</strong> RM 110</p>
+                <p class="house-details"><strong>Tenant Gender:</strong> Female</p>
+                <p class="house-details"><strong>Distance from University:</strong> 7 km</p>
+            </div>
+        </div>
+
+        <!-- Approved House 4 -->
+        <div class="content-box">
+            <img class="house-image" src="img/r4.jpg" alt="House 4">
+            <div>
+                <h3>House 4</h3>
+                <p class="house-details"><strong>Address:</strong> 101 Maple Road, Suburbia</p>
+                <p class="house-details"><strong>Rent:</strong> RM 1,600/month</p>
+                <p class="house-details"><strong>Water Bills:</strong> RM 55</p>
+                <p class="house-details"><strong>Electricity Bills:</strong> RM 95</p>
+                <p class="house-details"><strong>Tenant Gender:</strong> Both</p>
+                <p class="house-details"><strong>Distance from University:</strong> 6 km</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

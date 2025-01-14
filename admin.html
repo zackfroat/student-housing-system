@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        /* Reusing the same styles from student dashboard */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar img {
+            height: 120px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: #d69ce8;
+            color: white;
+        }
+
+        .welcome-box {
+            background-color: #d69ce8;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .main-content {
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: #b76bc7;
+            margin-bottom: 20px;
+        }
+
+        .content-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .content-box h3 {
+            color: #555;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .form-container input,
+        .form-container textarea,
+        .form-container button {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-container button {
+            background-color: #d69ce8;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-container button:hover {
+            background-color: #b76bc7;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+            text-align: center;
+        }
+
+        .modal-content h4 {
+            margin-bottom: 20px;
+        }
+
+        .modal-content ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .modal-content ul li {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .modal-content input {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .modal-content button {
+            padding: 10px;
+            background-color: #d69ce8;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .modal-content button:hover {
+            background-color: #b76bc7;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <img src="img/2.png" alt="University Logo">
+        <div class="nav-links">
+        </div>
+        <div class="welcome-box">
+            Admin Dashboard
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1 class="header">Admin Dashboard</h1>
+
+        <!-- News Section -->
+        <div class="content-box">
+            <h3>Update News</h3>
+            <form class="form-container" action="" method="POST">
+                <input type="text" name="news_title" placeholder="News Title" required>
+                <textarea name="news_content" rows="4" placeholder="News Content" required></textarea>
+                <button type="submit">Update News</button>
+            </form>
+        </div>
+
+        <!-- Notice Section -->
+        <div class="content-box">
+            <h3>Update Notices</h3>
+            <form class="form-container" action="" method="POST">
+                <input type="text" name="notice_title" placeholder="Notice Title" required>
+                <textarea name="notice_content" rows="4" placeholder="Notice Content" required></textarea>
+                <button type="submit">Update Notice</button>
+            </form>
+        </div>
+
+        <!-- Coming Soon Events Section -->
+        <div class="content-box">
+            <h3>Update Coming Soon Events</h3>
+            <form class="form-container" action="" method="POST">
+                <input type="text" name="event_title" placeholder="Event Title" required>
+                <textarea name="event_content" rows="4" placeholder="Event Content" required></textarea>
+                <button type="submit">Update Event</button>
+            </form>
+        </div>
+
+        <!-- Approve Houses Section -->
+        <div class="content-box">
+            <h3>Approve Houses</h3>
+            <button onclick="showApproveHousesModal()">Approve Houses</button>
+        </div>
+
+        <!-- Ban Landlords Section -->
+        <div class="content-box">
+            <h3>Ban Landlords</h3>
+            <button onclick="showBanLandlordsModal()">Ban Landlords</button>
+        </div>
+    </div>
+
+    <!-- Approve Houses Modal -->
+    <div id="approveHousesModal" class="modal">
+        <div class="modal-content">
+            <h4>Approve Houses</h4>
+            <ul id="housesList">
+                <li onclick="approveHouse(this)">
+                    <strong>House 1</strong><br>
+                    Location: 123 JALAN, Cityville<br>
+                    Rent: RM 1200/month<br>
+                    Landlord: John Doe<br>
+                    Contact: johndoe@example.com<br>
+                    Description: A cozy 3-bedroom house in a quiet neighborhood.
+                </li>
+                <li onclick="approveHouse(this)">
+                    <strong>House 2</strong><br>
+                    Location: 456 TAMAN, Townsville<br>
+                    Rent: RM 1500/month<br>
+                    Landlord: Jane Smith<br>
+                    Contact: janesmith@example.com<br>
+                    Description: Spacious 4-bedroom house with a large backyard.
+                </li>
+                <li onclick="approveHouse(this)">
+                    <strong>House 3</strong><br>
+                    Location: 789 JLN, Suburbia<br>
+                    Rent: RM 1000/month<br>
+                    Landlord: Bob Brown<br>
+                    Contact: bobbrown@example.com<br>
+                    Description: A charming 2-bedroom house close to public transport.
+                </li>
+            </ul>
+            <button onclick="closeApproveHousesModal()">Close</button>
+        </div>
+    </div>
+
+    <!-- Ban Landlords Modal -->
+    <div id="banLandlordsModal" class="modal">
+        <div class="modal-content">
+            <h4>Ban Landlord</h4>
+            <input type="text" placeholder="Enter Landlord Username" id="landlordUsername">
+            <button>Ban</button>
+            <button onclick="closeBanLandlordsModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function showApproveHousesModal() {
+            document.getElementById('approveHousesModal').style.display = 'flex';
+        }
+
+        function closeApproveHousesModal() {
+            document.getElementById('approveHousesModal').style.display = 'none';
+        }
+
+        function approveHouse(houseElement) {
+            houseElement.style.display = 'none';
+            alert('House approved successfully.');
+        }
+
+        function showBanLandlordsModal() {
+            document.getElementById('banLandlordsModal').style.display = 'flex';
+        }
+
+        function closeBanLandlordsModal() {
+            document.getElementById('banLandlordsModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

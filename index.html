@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Housing System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .navbar img {
+            height: 120px;
+        }
+
+        .btn {
+            background-color: #d69ce8;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin-left: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #b76bc7;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .left-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .left-section img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .right-section {
+            flex: 1;
+            padding: 20px;
+            background-color: #d69ce8;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .right-section h2 {
+            color: white;
+            text-align: center;
+        }
+
+        .news-container {
+            max-height: 200px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .news-item {
+            background-color: white;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .notice-section {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fef9c3;
+            border: 1px solid #f5e079;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .notice-section h2 {
+            text-align: center;
+            color: #d69c00;
+        }
+
+        .notice-box {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .coming-soon-section {
+            margin: 20px;
+            padding: 20px;
+            background-color: #eef2ff;
+            border: 1px solid #c3d0ff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .coming-soon-section h2 {
+            text-align: center;
+            color: #5b67e0;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-buttons button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .carousel-buttons button:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            width: 300px;
+        }
+
+        .popup h3 {
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .popup select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .popup input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .popup button {
+            width: 100%;
+            padding: 10px;
+            background-color: #d69ce8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .popup button:hover {
+            background-color: #b76bc7;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <img src="img/2.png" alt="University Logo">
+        <div>
+            <button class="btn" onclick="showPopup('login')">Login</button>
+            <button class="btn" onclick="showPopup('signup')">Sign Up</button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="left-section">
+            <img src="img/1.png" alt="Student Housing System">
+        </div>
+        <div class="right-section">
+            <h2>News Board</h2>
+            <div class="news-container">
+                <div class="news-item">News Item 1: Housing updates are coming soon.</div>
+                <div class="news-item">News Item 2: Maintenance scheduled for next week.</div>
+                <div class="news-item">News Item 3: New housing units are now available.</div>
+                <div class="news-item">News Item 4: New housing units are now available.</div>
+                <div class="news-item">News Item 5: New housing units are now available.</div>
+                <div class="news-item">News Item 6: New housing units are now available.</div>
+                <div class="news-item">News Item 7: New housing units are now available.</div>
+                <div class="news-item">News Item 8: New housing units are now available.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notice-section">
+        <h2>Notice</h2>
+        <div class="notice-box">
+            <p>System maintenance on January 15th. Stay safe!</p>
+        </div>
+    </div>
+
+    <div class="coming-soon-section">
+        <h2>Coming Soon Events</h2>
+        <div class="carousel-container">
+            <div class="carousel" id="carousel">
+                <img src="img/3.jpeg" alt="Event Poster 1">
+                <img src="img/4.jpeg" alt="Event Poster 2">
+                <img src="img/5.jpeg" alt="Event Poster 3">
+                <img src="img/6.jpeg" alt="Event Poster 4">
+                <img src="img/7.jpeg" alt="Event Poster 5">
+                <img src="img/8.jpeg" alt="Event Poster 6">
+                <img src="img/9.jpeg" alt="Event Poster 7">
+            </div>
+            <div class="carousel-buttons">
+                <button onclick="previousSlide()">&#8249;</button>
+                <button onclick="nextSlide()">&#8250;</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popups -->
+    <div class="overlay" id="overlay" onclick="hidePopup()"></div>
+
+    <div class="popup" id="loginPopup">
+        <h3>Login</h3>
+        <form onsubmit="return handleFormSubmission('login')">
+            <select required>
+                <option value="" disabled selected>Select Role</option>
+                <option value="student">Student</option>
+                <option value="admin">Admin</option>
+                <option value="landlord">Landlord</option>
+            </select>
+            <input type="text" placeholder="Username" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    
+
+    <div class="popup" id="signupPopup">
+        <h3>Sign Up</h3>
+        <form onsubmit="return handleFormSubmission('signup')">
+            <select required>
+                <option value="" disabled selected>Select Role</option>
+                <option value="student">Student</option>
+                <option value="admin">Admin</option>
+                <option value="landlord">Landlord</option>
+            </select>
+            <input type="text" placeholder="Username" required>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <input type="password" placeholder="Confirm Password" required>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
+    <script>
+        function showPopup(type) {
+            document.getElementById('overlay').style.display = 'block';
+            if (type === 'login') {
+                document.getElementById('loginPopup').style.display = 'block';
+            } else if (type === 'signup') {
+                document.getElementById('signupPopup').style.display = 'block';
+            }
+        }
+
+        function hidePopup() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('loginPopup').style.display = 'none';
+            document.getElementById('signupPopup').style.display = 'none';
+        }
+
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            const carousel = document.getElementById("carousel");
+            const totalSlides = carousel.children.length;
+            currentIndex = (index + totalSlides) % totalSlides;
+            const offset = -currentIndex * 100;
+            carousel.style.transform = `translateX(${offset}%)`;
+        }
+
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+
+        function previousSlide() {
+            showSlide(currentIndex - 1);
+        }
+
+        setInterval(nextSlide, 5000);
+
+        function handleFormSubmission(type) {
+        const roleSelect = document.querySelector(`#${type}Popup select`);
+        const role = roleSelect.value;
+
+        if (!role) {
+            alert("Please select a role.");
+            return false;
+        }
+
+        if (type === 'login') {
+            // Redirect based on role for login
+            if (role === 'student') {
+                window.location.href = 'student.html';
+            } else if (role === 'admin') {
+                window.location.href = 'admin.html';
+            } else if (role === 'landlord') {
+                window.location.href = 'landlord.html';
+            }
+        } else if (type === 'signup') {
+            // Redirect based on role for signup
+            if (role === 'student') {
+                window.location.href = 'student.html';
+            } else if (role === 'admin') {
+                window.location.href = 'admin.html';
+            } else if (role === 'landlord') {
+                window.location.href = 'landlord.html';
+            }
+        }
+
+        return false; // Prevent default form submission
+        }
+    </script>
+</body>
+</html>

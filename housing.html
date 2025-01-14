@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Housing Page</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar img {
+            height: 120px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: #d69ce8;
+            color: white;
+        }
+
+        .welcome-box {
+            background-color: #d69ce8;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: #b76bc7;
+            margin-bottom: 20px;
+        }
+
+        .housing-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .housing-item {
+            display: flex;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            gap: 20px;
+        }
+
+        .housing-item img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .housing-details {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .housing-details p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .housing-details .rent {
+            font-weight: bold;
+            color: #b76bc7;
+        }
+
+        .housing-details .distance {
+            font-style: italic;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <img src="img/2.png" alt="University Logo">
+        <div class="nav-links">
+            <a href="student.html">Home</a>
+            <a href="account.html">Account</a>
+            <a href="renting.html">Renting</a>
+            <a href="bills.html">Bills</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="welcome-box">
+            Welcome, <span id="username">Student</span>!
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1 class="header">Available Housing Options</h1>
+
+        <!-- Housing List -->
+        <div class="housing-list">
+
+            <!-- Placeholder Housing 1 -->
+            <div class="housing-item">
+                <img src="img/r3.jpg" alt="Housing 1">
+                <div class="housing-details">
+                    <p><strong>Address:</strong> 123 Example Street, City</p>
+                    <p class="rent"><strong>Rent:</strong> RM 500/month</p>
+                    <p class="distance"><strong>Distance:</strong> 1.5km from university</p>
+                    <p><strong>Suitable for:</strong> Male students</p>
+                </div>
+            </div>
+
+            <!-- Placeholder Housing 2 -->
+            <div class="housing-item">
+                <img src="img/r2.jpg" alt="Housing 2">
+                <div class="housing-details">
+                    <p><strong>Address:</strong> 456 Sample Avenue, City</p>
+                    <p class="rent"><strong>Rent:</strong> RM 450/month</p>
+                    <p class="distance"><strong>Distance:</strong> 2km from university</p>
+                    <p><strong>Suitable for:</strong> Female students</p>
+                </div>
+            </div>
+
+            <!-- Placeholder Housing 3 -->
+            <div class="housing-item">
+                <img src="img/r1.jpg" alt="Housing 3">
+                <div class="housing-details">
+                    <p><strong>Address:</strong> 789 Demo Road, City</p>
+                    <p class="rent"><strong>Rent:</strong> RM 600/semester</p>
+                    <p class="distance"><strong>Distance:</strong> 1km from university</p>
+                    <p><strong>Suitable for:</strong>female students</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Script to Display Username -->
+    <script>
+        // Simulating a username passed through a session or URL parameter
+        const username = "JohnDoe"; // Replace this with dynamic logic from your backend/session
+        document.getElementById("username").textContent = username;
+    </script>
+</body>
+</html>

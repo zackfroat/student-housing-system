@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renting</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar img {
+            height: 120px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: #d69ce8;
+            color: white;
+        }
+
+        .welcome-box {
+            background-color: #d69ce8;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* Form Styles */
+        .main-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            min-height: calc(100vh - 150px);
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .form-container h1 {
+            text-align: center;
+            color: #b76bc7;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #b76bc7;
+        }
+
+        .form-group .deposit {
+            font-weight: bold;
+            color: #b76bc7;
+            margin-top: 10px;
+        }
+
+        .form-group .payment-options label {
+            display: inline-block;
+            margin-right: 15px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: #d69ce8;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-button:hover {
+            background-color: #b76bc7;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <img src="img/2.png" alt="University Logo">
+        <div class="nav-links">
+            <a href="account1.html">Account</a>
+            <a href="housing.html">Housing</a>
+            <a href="student.html">Home</a>
+            <a href="bills.html">Bills</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="welcome-box">
+            Welcome, <span id="username">Student</span>!
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="form-container">
+            <h1>Rent a House</h1>
+            <form onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="house-name">Select a House:</label>
+                    <select id="house-name" name="house-name">
+                        <option value="House A" data-deposit="500">House A</option>
+                        <option value="House B" data-deposit="700">House B</option>
+                        <option value="House C" data-deposit="900">House C</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="number" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <p class="deposit">Deposit Price: $<span id="deposit-price">500</span></p>
+                </div>
+                <div class="form-group">
+                    <label>Payment Method:</label>
+                    <div class="payment-options">
+                        <label><input type="radio" name="payment-method" value="Online Banking" required> Online Banking</label>
+                        <label><input type="radio" name="payment-method" value="Cash"> Cash</label>
+                        <label><input type="radio" name="payment-method" value="Visa/Mastercard"> Visa/Mastercard</label>
+                    </div>
+                </div>
+                <button type="submit" class="submit-button">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script to Update Deposit Price and Handle Submission -->
+    <script>
+        const houseSelect = document.getElementById("house-name");
+        const depositPrice = document.getElementById("deposit-price");
+
+        houseSelect.addEventListener("change", () => {
+            const selectedOption = houseSelect.options[houseSelect.selectedIndex];
+            depositPrice.textContent = selectedOption.getAttribute("data-deposit");
+        });
+
+        // Simulating a username passed through a session or URL parameter
+        const username = "JohnDoe"; // Replace this with dynamic logic from your backend/session
+        document.getElementById("username").textContent = username;
+
+        // Handle form submission
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent default form submission
+            alert("Payment Made"); // Show the popup message
+            window.location.href = "student.html"; // Redirect to student.html
+        }
+    </script>
+</body>
+</html>

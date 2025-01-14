@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bills</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar img {
+            height: 120px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: #d69ce8;
+            color: white;
+        }
+
+        .welcome-box {
+            background-color: #d69ce8;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: #b76bc7;
+            margin-bottom: 20px;
+        }
+
+        .bill-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .bill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .bill-item:last-child {
+            border-bottom: none;
+        }
+
+        .bill-item h3 {
+            margin: 0;
+            color: #555;
+        }
+
+        .bill-item p {
+            margin: 0;
+            font-weight: bold;
+            color: #b76bc7;
+        }
+
+        .pay-button {
+            background-color: #d69ce8;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .pay-button:hover {
+            background-color: #b76bc7;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <img src="img/2.png" alt="University Logo">
+        <div class="nav-links">
+            <a href="account1.html">Account</a>
+            <a href="housing.html">Housing</a>
+            <a href="renting.html">Renting</a>
+            <a href="student.html">Home</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="welcome-box">
+            Welcome, <span id="username">Student</span>!
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1 class="header">Your Bills</h1>
+        <div class="bill-container">
+            <div class="bill-item">
+                <h3>Water Bill</h3>
+                <p>RM 50</p>
+                <button class="pay-button" onclick="payBill('Water Bill')">Pay</button>
+            </div>
+            <div class="bill-item">
+                <h3>Electricity Bill</h3>
+                <p>RM 70</p>
+                <button class="pay-button" onclick="payBill('Electricity Bill')">Pay</button>
+            </div>
+            <div class="bill-item">
+                <h3>Rent Bill</h3>
+                <p>RM 500</p>
+                <button class="pay-button" onclick="payBill('Rent Bill')">Pay</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script>
+        // Simulating a username passed through a session or URL parameter
+        const username = "JohnDoe"; // Replace this with dynamic logic from your backend/session
+        document.getElementById("username").textContent = username;
+
+        // Function to handle bill payment
+        function payBill(billType) {
+            alert(`${billType} has been paid successfully!`);
+        }
+    </script>
+</body>
+</html>
