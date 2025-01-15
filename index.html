@@ -213,6 +213,28 @@
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 999;
         }
+
+        .video-section {
+        margin-top: 20px;
+        text-align: center;
+        background-color: #eef2ff;
+        padding: 20px;
+        border: 1px solid #c3d0ff;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-section h3 {
+            color: #5b67e0;
+            margin-bottom: 15px;
+        }
+
+        .video-section iframe {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
     </style>
 </head>
 <body>
@@ -237,15 +259,14 @@
             <div class="news-container">
                 <div class="news-item">News Item 1: Housing updates are coming soon.</div>
                 <div class="news-item">News Item 2: Maintenance scheduled for next week.</div>
-                <!-- Additional news items as placeholders -->
                 <div class="news-item">News Item 3: New housing units are now available.</div>
                 <div class="news-item">News Item 4: Events planned for next semester.</div>
-                <div class="news-item">News Item 3: New housing units are now available.</div>
-                <div class="news-item">News Item 4: Events planned for next semester.</div>
-                <div class="news-item">News Item 3: New housing units are now available.</div>
-                <div class="news-item">News Item 4: Events planned for next semester.</div>
-                <div class="news-item">News Item 3: New housing units are now available.</div>
-                <div class="news-item">News Item 4: Events planned for next semester.</div>
+                <div class="news-item">News Item 5: New housing units are now available.</div>
+                <div class="news-item">News Item 6: Events planned for next semester.</div>
+                <div class="news-item">News Item 7: New housing units are now available.</div>
+                <div class="news-item">News Item 8: Events planned for next semester.</div>
+                <div class="news-item">News Item 9: New housing units are now available.</div>
+                <div class="news-item">News Item 10: Events planned for next semester.</div>
             </div>
         </div>
     </div>
@@ -277,6 +298,21 @@
             </div>
         </div>
     </div>
+
+        <!-- Embedded YouTube Video -->
+        <div class="video-section">
+            <h3>Watch Our university anthem song</h3>
+            <iframe 
+                width="560" 
+                height="315" 
+                src="https://www.youtube.com/embed/b5DpQPYtxuk?si=pf8pjp1xT2Yko0BY" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" 
+                allowfullscreen>
+            </iframe>
+        </div>
 
     <!-- Popups -->
     <div class="overlay" id="overlay" onclick="hidePopup()"></div>
